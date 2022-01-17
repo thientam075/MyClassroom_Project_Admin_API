@@ -2,7 +2,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const JWTStrategy = require("passport-jwt").Strategy;
 const ExtractJWT = require("passport-jwt").ExtractJwt;
-const User = require("../components/users/userModel");
+const Admin = require("../components/admin/adminModel");
 const bcrypt = require("bcrypt");
 
 // Local Strategy
@@ -11,10 +11,10 @@ passport.use(new LocalStrategy(
   function(email, password, done) {
     console.log("email ", email);
     console.log("password ", password);
-    User.findOne({where: {email: email, authType: "local", isActive: true, isBan: false} }).then(user => {
-      if(user){
-        if(bcrypt.compareSync(password, user.password)){
-          done(null, user);
+    Admin.findOne({where: {email: email,  isBan: false} }).then(admin => {
+      if(admin){
+        if(bcrypt.compareSync(password, admin.password)){
+          done(null, admin);
         }else{
           done(null,false, {message: "Mật khẩu không đúng"});
         }
@@ -35,11 +35,11 @@ passport.use(
     async function (jwt_payload, done) {
       try {
         console.log(jwt_payload);
-        const user = await User.findOne({
+        const admin = await Admin.findOne({
           where: { id: jwt_payload.id },
         });
-        if (!user) return done(null, false);
-        else return done(null, user);
+        if (!admin) return done(null, false);
+        else return done(null, admin);
       } catch (err) {
         done(err, false);
       }

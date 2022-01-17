@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 const session = require('express-session');
-const indexRouter = require('./routes/index');
+
 const classRouter = require('./components/class/class');
 const userInClassRouter = require('./components/user_in_class/user_in_class');
 const userRouter =require('./components/users/userRouter')
@@ -34,14 +34,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/secret/:email', controller.getByEmail);
-app.post('/user/sendMailRepass/', controller.sendMailRepass);
-app.post('/user/Repass', controller.RenewPassword)
-app.get('/user/activeAccount/:id', controller.activeAccount);
-app.post('/user/sendMail', controller.sendMailActive);
 app.use('/auth',authRouter);
 app.use(passport.authenticate('jwt', {session : false}));
-app.use('/', indexRouter);
+
 app.use('/class', classRouter);
 app.use('/userInClass', userInClassRouter);
 app.use('/assignment', assignmentRouter);

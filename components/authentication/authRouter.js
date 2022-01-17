@@ -6,7 +6,6 @@ const passport = require('passport');
 const passportConfig = require('../../middleware/passport');
 
 router.post('/login',passport.authenticate('local', {session: false}) ,controller.LoginWithLocal);
-router.post('/register',controller.register);
-router.post('/google',controller.ImportDataGoogle ,controller.LoginWithGoogle);
+router.post('/create',controller.register);
 
 module.exports = router;
