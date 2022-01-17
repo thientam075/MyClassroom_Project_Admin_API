@@ -14,6 +14,7 @@ const userRouter =require('./components/users/userRouter')
 const authRouter = require('./components/authentication/authRouter');
 const avatarRouter =require('./components/avatar/avatarRouter');
 const assignmentRouter = require('./components/assignment/assignmentRouter');
+const adminRouter = require('./components/admin/adminRouter');
 const gradeRouter = require('./components/grade/grade');
 const app = express();
 const passport = require('passport');
@@ -36,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/auth',authRouter);
 app.use(passport.authenticate('jwt', {session : false}));
-
+app.use('/admin', adminRouter);
 app.use('/class', classRouter);
 app.use('/userInClass', userInClassRouter);
 app.use('/assignment', assignmentRouter);
