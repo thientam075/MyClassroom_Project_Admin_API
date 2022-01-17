@@ -9,5 +9,5 @@ module.exports.register = async (data) => {
     await data.save();
 }
 module.exports.getListAdmin = async () => {
-    await model.findAll();
+    return await model.findAll({attributes: ['id', 'email', 'fullname', 'isBan', 'role', 'createdAt']});
 }

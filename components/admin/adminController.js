@@ -3,15 +3,14 @@ const UserService = require("../users/userService");
 
 module.exports.listAdmin = async function(req, res, next){
 
-    const result = service.getListAdmin();
+    const result = await service.getListAdmin();
     res.json({
         data: result,
-        success: true,
     })
 }
 
 module.exports.listUser = async function(req, res, next){
-    const result = UserService.listUser();
+    const result = await UserService.listUser();
     res.json({
         data: result,
     })
