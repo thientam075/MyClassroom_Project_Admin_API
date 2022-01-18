@@ -8,7 +8,6 @@ const logger = require('morgan');
 const cors = require('cors');
 const session = require('express-session');
 
-const classRouter = require('./components/class/class');
 const userInClassRouter = require('./components/user_in_class/user_in_class');
 
 const authRouter = require('./components/authentication/authRouter');
@@ -37,7 +36,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/auth',authRouter);
 app.use(passport.authenticate('jwt', {session : false}));
 app.use('/admin', adminRouter);
-app.use('/class', classRouter);
 app.use('/userInClass', userInClassRouter);
 app.use('/assignment', assignmentRouter);
 

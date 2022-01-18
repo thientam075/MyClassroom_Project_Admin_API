@@ -29,3 +29,8 @@ module.exports.editIsBan = async (id, ban) => {
     { where: { id: id } }
   )
 }
+
+module.exports.findUserByIDStudent = async (idStudent) => {
+  const result = await model.findOne({where: {IDstudent: idStudent} });
+  return result;
+}
