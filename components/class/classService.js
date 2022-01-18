@@ -6,7 +6,10 @@ module.exports.listClass = async (user) => {
   const result = await User.findByPk(user.id, { include: Class });
   return result;
 };
-
+module.exports.listAllClass = async () => {
+  const result = await Class.findAll();
+  return result;
+};
 module.exports.addClass = async (user, name, subject) => {
   let checkCodeStudent=0 ;
   let checkCodeTeacher=0 ;
