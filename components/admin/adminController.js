@@ -15,3 +15,11 @@ module.exports.listUser = async function(req, res, next){
         data: result,
     })
 }
+
+module.exports.banOrUnbanUser = async (req, res, next) => {
+    await UserService.editIsBan(parseInt(req.body.id), req.body.ban);
+
+    res.json({
+        message: "Successfully"
+    })
+}

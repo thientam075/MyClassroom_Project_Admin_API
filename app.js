@@ -10,7 +10,7 @@ const session = require('express-session');
 
 const classRouter = require('./components/class/class');
 const userInClassRouter = require('./components/user_in_class/user_in_class');
-const userRouter =require('./components/users/userRouter')
+
 const authRouter = require('./components/authentication/authRouter');
 const avatarRouter =require('./components/avatar/avatarRouter');
 const assignmentRouter = require('./components/assignment/assignmentRouter');
@@ -20,7 +20,6 @@ const app = express();
 const passport = require('passport');
 const passportConfig = require('./middleware/passport');
 
-const controller = require('./components/users/userController');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -41,7 +40,7 @@ app.use('/admin', adminRouter);
 app.use('/class', classRouter);
 app.use('/userInClass', userInClassRouter);
 app.use('/assignment', assignmentRouter);
-app.use('/user', userRouter);
+
 app.use('/image', avatarRouter);
 app.use('/grade',gradeRouter);
 
