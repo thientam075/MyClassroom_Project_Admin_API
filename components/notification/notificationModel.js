@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const db = require("../../database");
-const Review = db.define(
-  "Review",
+const Notification = db.define(
+  "Notification",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -9,30 +9,30 @@ const Review = db.define(
       autoIncrement: true,
       primaryKey: true,
     },
-    gradeId: {
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    gradeWant: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
-    explaination: {
+    content: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    final: {
+    link: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    isNew: {
       type: DataTypes.BOOLEAN,
       allowNull: true,
-      defaultValue: false,
-    },
+      defaultValue: true,
+    }
   },
   {
-    tableName: "Review",
+    tableName: "Notification",
     timestamps: true,
   }
 );
 
-db.sync({ alter: true }).then(()=> console.log('Create reviewModel successfully'));;
+db.sync({ alter: true }).then(()=> console.log('Create notificationModel successfully'));;
 
-module.exports = Review;
+module.exports = Notification;

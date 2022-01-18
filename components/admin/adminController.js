@@ -1,6 +1,6 @@
 const service = require("./adminService");
 const UserService = require("../users/userService");
-const ClassService=require("../class/classService");
+const ClassService = require("../class/classService");
 
 module.exports.listAdmin = async function(req, res, next){
 

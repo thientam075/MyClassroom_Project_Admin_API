@@ -22,6 +22,11 @@ const Grade = db.define(
       type: DataTypes.INTEGER,
       allowNull: true,
     },
+    isCompleted: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: false,
+    }
   },
   {
     tableName: "Grade",
