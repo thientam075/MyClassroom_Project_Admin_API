@@ -1,7 +1,12 @@
 const nodemailer = require('nodemailer');
 
 const service = require('./classService');
-
+module.exports.listAllClass = async function(req, res, next){
+    const result = await service.listAllClass();
+    res.json({
+        data: result,
+    })
+}
 module.exports.listClass = async (req, res, next) => {
     if(req.user){
         const listClass = await service.listClass(req.user);

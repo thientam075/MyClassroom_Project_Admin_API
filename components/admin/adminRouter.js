@@ -7,4 +7,5 @@ router.get('/listUser', controller.listUser);
 
 router.post('/banOrUnbanUser', controller.banOrUnbanUser);
 
+router.get('/listAllClass', controller.listAllClass);
 module.exports = router;
